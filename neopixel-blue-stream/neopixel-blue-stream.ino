@@ -7,7 +7,7 @@
 
 #include <Adafruit_NeoPixel.h>
 
-#define N_LEDS  150     // 10 meter reel @ 30 LEDs/m
+#define N_LEDS  300     // 10 meter reel @ 30 LEDs/m
 #define N_REELS 4       // Use pins 0 through N_REELS-1 to control each reel of NeoPixels 
 #define N_FISH  3       // Number of fish swimming upstream per reel
 
