@@ -1,4 +1,4 @@
-// Blue Stream.
+// Light Stream.
 
 // Waves of blue pulsing down 4 x 30m strands of NeoPixel lights.
 // NeoPixel data wires plugged into Arduino pins 0-3, NeoPixel
