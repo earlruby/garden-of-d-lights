@@ -10,14 +10,14 @@
 
 Adafruit_NeoPixel reel[N_REELS];
 
-int spiral_width  = 7;     // Width in pixels across reels
-int spiral_height = 3;     // Length in pixels along a single reel
-int spiral_slope = 1;      // Advance 1 pixel per reel
-int spiral_separation = floor(N_LEDS/(N_SPIRALS+1));
-int offset = 0;
+uint16_t spiral_width  = 7;     // Width in pixels across reels
+uint16_t spiral_height = 3;     // Length in pixels along a single reel
+uint16_t spiral_slope = 1;      // Advance 1 pixel per reel
+uint16_t spiral_separation = floor(N_LEDS/(N_SPIRALS+1));
 
-int spiral[N_SPIRALS][2];    // Per spiral, the current lower left corner's starting reel and pixel
-uint32_t color[N_SPIRALS];   // The color of each spiral
+int spiral_starting_reel[N_SPIRALS];       // Per spiral, the current lower left corner's starting reel
+uint16_t spiral_starting_pixel[N_SPIRALS]; // Per spiral, the current lower left corner's starting reel
+uint32_t color[N_SPIRALS];                 // The color of each spiral
 
 void setup() {
   randomSeed(analogRead(0));  // Initialize random number generator using analog noise
@@ -29,8 +29,8 @@ void setup() {
   }
 
   for (int b=0; b < N_SPIRALS; b++) {
-    spiral[b][0] = random(0, N_REELS);    // Starting reel for spiral
-    spiral[b][1] = b * spiral_separation; // Starting pixel for spiral
+    spiral_starting_reel[b]  = random(0, N_REELS);                   // Starting reel for spiral
+    spiral_starting_pixel[b] = ((uint16_t) b) * spiral_separation;   // Starting pixel for spiral
   }
 
   color[0] = 0xFF0000; // Red
@@ -44,16 +44,16 @@ void setup() {
 void loop() {
   for(int b=0; b < N_SPIRALS; b++) {
     // Draw a frame for each spiral
-    draw_spiral(spiral[b][0], spiral[b][1], color[b]);
+    draw_spiral(spiral_starting_reel[b], (uint16_t) spiral_starting_pixel[b], color[b]);
 
     // Advance to the next reel
-    spiral[b][0]++;
-    if (spiral[b][0] >= N_REELS) {
-      spiral[b][0] = 0;
+    spiral_starting_reel[b]++;
+    if (spiral_starting_reel[b] >= N_REELS) {
+      spiral_starting_reel[b] = 0;
     }
-    spiral[b][1] += spiral_slope;
-    if (spiral[b][1] >= N_LEDS) {
-      spiral[b][1] = spiral[b][1] - N_LEDS;
+    spiral_starting_pixel[b] += spiral_slope;
+    if (spiral_starting_pixel[b] >= N_LEDS) {
+      spiral_starting_pixel[b] = spiral_starting_pixel[b] - N_LEDS;
     }
   }
   for (int p = 0; p < N_REELS; p++) {
@@ -63,11 +63,11 @@ void loop() {
 }
 
 // Given the lower left-hand corner, draw a single spiral
-static void draw_spiral(int starting_reel, int starting_pixel, uint32_t color) {
+static void draw_spiral(int starting_reel, uint16_t starting_pixel, uint32_t color) {
   // Erase where the spiral was
   int r = starting_reel;
-  for(int i=0; i<spiral_height; i++) {
-    int pixel = i + starting_pixel;
+  for(uint16_t i=0; i<spiral_height; i++) {
+    uint16_t pixel = i + starting_pixel;
     // Wrap around to the bottom
     if (pixel >= N_LEDS) {
       pixel = pixel - N_LEDS;
@@ -84,8 +84,8 @@ static void draw_spiral(int starting_reel, int starting_pixel, uint32_t color) {
       r = r - N_REELS;
     }
 
-    for (int h = 0; h < spiral_height; h++) {
-      int pixel = h + starting_pixel + ((w + 1) * spiral_slope);
+    for (uint16_t h = 0; h < spiral_height; h++) {
+      uint16_t pixel = h + starting_pixel + (((uint16_t)(w + 1)) * spiral_slope);
       // Wrap from the top back to the bottom
       if (pixel >= N_LEDS) {
         pixel = pixel - N_LEDS;
