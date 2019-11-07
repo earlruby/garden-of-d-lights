@@ -6,60 +6,88 @@
 
 #define N_LEDS    150     // 10 meter reel @ 30 LEDs/m
 #define N_REELS   12      // Use pins 0 through N_REELS-1 to control each reel of NeoPixels 
-#define N_SPIRALS 5       // Number of spiraling spirals
+#define N_SPIRALS 8       // Number of spiraling spirals
+#define N_COLORS  8       // Number of different colors
 
-Adafruit_NeoPixel reel[N_REELS];
+// The Arduino compiler won't let me do this in a loop
+int pin = 0;
+Adafruit_NeoPixel reel[] = {
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800)
+};
 
-uint16_t spiral_width  = 7;     // Width in pixels across reels
-uint16_t spiral_height = 3;     // Length in pixels along a single reel
+uint16_t spiral_width  = 10;    // Width in pixels across reels
+uint16_t spiral_height = 4;     // Length in pixels along a single reel
 uint16_t spiral_slope = 1;      // Advance 1 pixel per reel
-uint16_t spiral_separation = floor(N_LEDS/(N_SPIRALS+1));
+uint16_t spiral_separation = floor(N_LEDS/(N_SPIRALS));
 
 int spiral_starting_reel[N_SPIRALS];       // Per spiral, the current lower left corner's starting reel
 uint16_t spiral_starting_pixel[N_SPIRALS]; // Per spiral, the current lower left corner's starting reel
-uint32_t color[N_SPIRALS];                 // The color of each spiral
+int spiral_color[N_SPIRALS];               // The index of the color of each spiral
+uint32_t color[N_COLORS];                  // The available colors
 
 void setup() {
   randomSeed(analogRead(0));  // Initialize random number generator using analog noise
 
   for (int p = 0; p < N_REELS; p++) {
-    reel[p] = Adafruit_NeoPixel(N_LEDS, p, NEO_GRB + NEO_KHZ800);
     reel[p].begin();
-    reel[p].clear();
+    reel[p].show();
   }
 
   for (int b=0; b < N_SPIRALS; b++) {
     spiral_starting_reel[b]  = random(0, N_REELS);                   // Starting reel for spiral
     spiral_starting_pixel[b] = ((uint16_t) b) * spiral_separation;   // Starting pixel for spiral
+    spiral_color[b] = random(0, N_COLORS);                           // Starting index of the color of each spiral
   }
 
-  color[0] = 0xFF0000; // Red
-  color[1] = 0x8B4000; // Dark Red
-  color[2] = 0x800000; // Maroon
-  color[3] = 0xFF6347; // Tomato
-  color[4] = 0xDC143C; // Crimson Red
-  //color[5] = 0xCD5C5C; // Indian Red  
+  color[0] = 0x960018; // Red
+  color[1] = 0x8B4000; // Warm Yellow
+  color[2] = 0xFF00FF; // Magenta
+  color[3] = 0xDC143C; // Crimson Red
+  color[4] = 0x7F00FF; // Violet
+  color[5] = 0xFFFF00; // Green Yellow
+  color[6] = 0xE0115F; // Pink
+  color[7] = 0xFF0800; // Candy Apple
 }
 
 void loop() {
+
+  // Draw the spirals
   for(int b=0; b < N_SPIRALS; b++) {
     // Draw a frame for each spiral
-    draw_spiral(spiral_starting_reel[b], (uint16_t) spiral_starting_pixel[b], color[b]);
+    draw_spiral(spiral_starting_reel[b], (uint16_t) spiral_starting_pixel[b], color[spiral_color[b]]);
 
     // Advance to the next reel
     spiral_starting_reel[b]++;
     if (spiral_starting_reel[b] >= N_REELS) {
       spiral_starting_reel[b] = 0;
     }
+    // Wrap from top to bottom
     spiral_starting_pixel[b] += spiral_slope;
     if (spiral_starting_pixel[b] >= N_LEDS) {
       spiral_starting_pixel[b] = spiral_starting_pixel[b] - N_LEDS;
     }
+
+    // Randomly change a color
+    if (random(0,500) == 0) {
+      spiral_color[b] = random(0, N_COLORS);
+    }
   }
+  
   for (int p = 0; p < N_REELS; p++) {
     reel[p].show();
   }
-  delay(35);
+  delay(50);
 }
 
 // Given the lower left-hand corner, draw a single spiral
