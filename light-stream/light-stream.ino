@@ -9,9 +9,18 @@
 
 #define N_LEDS  300     // 10 meter reel @ 30 LEDs/m
 #define N_REELS 4       // Use pins 0 through N_REELS-1 to control each reel of NeoPixels 
-#define N_FISH  3       // Number of fish swimming upstream per reel
+#define N_FISH  6       // Number of fish swimming upstream per reel
 
-Adafruit_NeoPixel strip[N_REELS];
+// The Arduino compiler won't let me do this in a loop
+int pin = 0;
+Adafruit_NeoPixel strip[] = {
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800)
+};
+
+
 uint16_t fish[N_FISH][N_REELS];
 
 void setup() {
@@ -19,7 +28,6 @@ void setup() {
 
   int initial_fish_spacing = 50;
   for (int p = 0; p < N_REELS; p++) {
-    strip[p] = Adafruit_NeoPixel(N_LEDS, p, NEO_GRB + NEO_KHZ800);
     for (int f = 0; f < N_FISH; f++) {
       fish[f][p]= strip[p].numPixels() - 1 - (f * initial_fish_spacing);
     }
