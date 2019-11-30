@@ -6,8 +6,8 @@
 
 #define N_LEDS    150     // 10 meter reel @ 30 LEDs/m
 #define N_REELS   12      // Use pins 0 through N_REELS-1 to control each reel of NeoPixels 
-#define N_SPIRALS 8       // Number of spiraling spirals
-#define N_COLORS  8       // Number of different colors
+#define N_SPIRALS 8       // Number of spirals
+#define N_COLORS  6       // Number of different colors
 
 // The Arduino compiler won't let me do this in a loop
 int pin = 0;
@@ -27,7 +27,7 @@ Adafruit_NeoPixel reel[] = {
 };
 
 uint16_t spiral_width  = 10;    // Width in pixels across reels
-uint16_t spiral_height = 4;     // Length in pixels along a single reel
+uint16_t spiral_height = 6;     // Length in pixels along a single reel
 uint16_t spiral_slope = 1;      // Advance 1 pixel per reel
 uint16_t spiral_separation = floor(N_LEDS/(N_SPIRALS));
 
@@ -51,13 +51,13 @@ void setup() {
   }
 
   color[0] = 0x960018; // Red
-  color[1] = 0x8B4000; // Warm Yellow
+  color[1] = 0xFF0800; // Candy Apple
   color[2] = 0xFF00FF; // Magenta
   color[3] = 0xDC143C; // Crimson Red
   color[4] = 0x7F00FF; // Violet
-  color[5] = 0xFFFF00; // Green Yellow
-  color[6] = 0xE0115F; // Pink
-  color[7] = 0xFF0800; // Candy Apple
+  color[5] = 0xE0115F; // Pink
+  //color[6] = 0xFFFF00; // Green Yellow
+  //color[7] = 0x8B4000; // Warm Yellow
 }
 
 void loop() {
@@ -87,7 +87,7 @@ void loop() {
   for (int p = 0; p < N_REELS; p++) {
     reel[p].show();
   }
-  delay(50);
+  delay(150);
 }
 
 // Given the lower left-hand corner, draw a single spiral
