@@ -6,18 +6,24 @@
 
 #include <Adafruit_NeoPixel.h>
 
-#define PIN    0       // Arduino signaling pin
-#define N_LEDS 600     // 4 x 5 meter reel @ 30 LEDs/m
-#define N_ORBS 4       // Number of orbs
-#define MAX_SPEED 5    // Maximum speed
+#define N_LEDS    600     // Per reel: 4 x 5 meter reel @ 30 LEDs/m
+#define N_REELS   2       // Use pins 0 through N_REELS-1 to control each reel of NeoPixels
+#define N_TOTAL_LEDS 1200 // N_LEDS * N_REELS
+#define N_ORBS    6       // Number of orbs
+#define MAX_SPEED 4       // Maximum speed
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, PIN, NEO_GRB + NEO_KHZ800);
+// The Arduino compiler won't let me do this in a loop
+int pin = 0;
+Adafruit_NeoPixel reel[] = {
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800),
+   Adafruit_NeoPixel(N_LEDS, pin++, NEO_GRB + NEO_KHZ800)
+};
 
 uint32_t orbColor[N_ORBS];
 uint16_t orbPosition[N_ORBS];   // LED # to light
 int orbSpeed[N_ORBS];           // 0 to MAX_SPEED
 int orbDirection[N_ORBS];       // 1=forward, -1=backward
-bool orbCollide[N_ORBS];     // Has the orb collided since it was last moved?
+bool orbCollide[N_ORBS];        // Has the orb collided since it was last moved?
 
 int speedCtr;
 int tPosition;
@@ -30,22 +36,43 @@ void setup() {
   orbColor[1] = 0xFF00FF; // Magenta
   orbColor[2] = 0xFFA500; // Orange
   orbColor[3] = 0xFFFFFF; // White
+  orbColor[4] = 0xFF0800; // Candy Apple
+  orbColor[5] = 0x00FF00; // Green
 
   for (int i = 0; i < N_ORBS; i++) {
     orbPosition[i] = (N_LEDS * i) / N_ORBS;
-    orbSpeed[i] = min(i + 2, MAX_SPEED);
+    orbSpeed[i] = (i % MAX_SPEED) + 2;
     orbDirection[i] = 1;
     orbCollide[i] = false;
   }
 
-  strip.begin();
+  for (int r = 0; r < N_REELS; r++) {
+    reel[r].begin();
+    reel[r].show();
+  }
+}
+
+// pixel is a number >= 0 and < N_TOTAL_LEDS
+static void draw_pixel(uint16_t pixel, uint32_t color) {
+  if (pixel < N_LEDS) {
+    // First half is reel 0, pixels are lit from 0 to 599
+    reel[0].setPixelColor(pixel, color);
+  } else {
+    // Second half of the circle is reel 1, pixels are lit from 600 to 0, e.g.:
+    // If pixel = 600, light pixel 599
+    // If pixel = 601, light pixel 598
+    // If pixel = 602, light pixel 597
+    // If pixel = 1198, light pixel 1
+    // If pixel = 1199, light pixel 0
+    reel[1].setPixelColor(N_LEDS - (pixel - N_LEDS) - 1, color);
+  }
 }
 
 void loop() {
-  
+
   for (int i = 0; i < N_ORBS; i++) {
     // Erase where orb was
-    strip.setPixelColor(orbPosition[i], 0);
+    draw_pixel(orbPosition[i], 0);
 
     // Move the orb
     tPosition = (int) orbPosition[i];
@@ -55,11 +82,11 @@ void loop() {
     }
 
     // Wrap around the ends
-    if (tPosition >= N_LEDS) {
-      tPosition -= N_LEDS;
+    if (tPosition >= N_TOTAL_LEDS) {
+      tPosition -= N_TOTAL_LEDS;
     }
     if (tPosition < 0) {
-      tPosition += N_LEDS;
+      tPosition += N_TOTAL_LEDS;
     }
     orbPosition[i] = (uint16_t) tPosition;
 
@@ -90,11 +117,11 @@ void loop() {
     }
  
     // Draw where the orb is now
-    strip.setPixelColor(orbPosition[i], orbColor[i]);
+    draw_pixel(orbPosition[i], orbColor[i]);
   }
- 
-  strip.show();
-  //delay(5);
+
+  reel[0].show();
+  reel[1].show();
   
   speedCtr++;
   if (speedCtr > MAX_SPEED) {
