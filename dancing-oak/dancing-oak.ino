@@ -4,7 +4,7 @@
 
 #include <Adafruit_NeoPixel.h>
 
-#define N_LEDS    150     // 10 meter reel @ 30 LEDs/m
+#define N_LEDS    150     // 5 meter reel @ 30 LEDs/m
 #define N_REELS   12      // Use pins 0 through N_REELS-1 to control each reel of NeoPixels 
 #define N_SPIRALS 8       // Number of spirals
 #define N_COLORS  6       // Number of different colors
