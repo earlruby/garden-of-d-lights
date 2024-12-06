@@ -7,7 +7,7 @@
 
 #define PIN0    0       // Arduino signaling pin
 #define PIN1    1       // Arduino signaling pin
-#define N_LEDS 150      // 4 x 5 meter reel @ 30 LEDs/m
+#define N_LEDS  150     // 5 meter reel @ 30 LEDs/m
 
 Adafruit_NeoPixel strip[2] = {
   Adafruit_NeoPixel(N_LEDS, PIN0, NEO_GRB + NEO_KHZ800),
