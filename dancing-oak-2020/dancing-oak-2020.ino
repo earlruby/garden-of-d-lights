@@ -1,4 +1,4 @@
-// Light Stream.
+// Dancing Oak
 
 // Waves of blue and green pulsing up 12 x 5m strands of NeoPixel
 // lights running up the sides of an old oak tree.
