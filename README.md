@@ -9,7 +9,7 @@ Arduino code used to run the Garden of d'Lights at the Ruth Bancroft Garden.
 
 ## Testing NeoPixels
 
-![Testing a strand of NeoPixels](images/neopixel-test-2019-05-18-16.48.13.mov?raw=true "Testing a strand of NeoPixels")
+https://github.com/earlruby/garden-of-d-lights/blob/main/images/neopixel-test-2019-05-18-16.48.13.mov
 
 ## Dancing Oak AKA "Lava"
 
