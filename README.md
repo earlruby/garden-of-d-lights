@@ -13,11 +13,11 @@ I am documenting these installations here.
 
 ![Earl Ruby at The Garden of D'Lights 2023](images/20240103_193827.jpg "Earl Ruby at The Garden of D'Lights")
 
-![GoDL 2023](images/'2023-12-01 17.24.02.jpg')
+![GoDL 2023](images/2023-12-01%2017.24.02.jpg)
 
-![GoDL 2023](images/'2023-12-01 18.03.59.jpg')
+![GoDL 2023](images/2023-12-01%2018.03.59.jpg)
 
-![GoDL 2023](images/'2023-12-01 19.57.56.jpg')
+![GoDL 2023](images/2023-12-01%2019.57.56.jpg)
 
 ## NeoPixels
 
