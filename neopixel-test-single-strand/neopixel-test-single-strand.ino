@@ -11,7 +11,7 @@
 #include <Adafruit_NeoPixel.h>
 
 #define PIN    0
-#define N_LEDS 300     // 5 meter reel @ 30 LEDs/m                                                                                                                                                              // 5 meter reel @ 30 LEDs/m
+#define N_LEDS 150     // 5 meter reel @ 30 LEDs/m                                                                                                                                                              // 5 meter reel @ 30 LEDs/m
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, PIN, NEO_GRB + NEO_KHZ800);
 
