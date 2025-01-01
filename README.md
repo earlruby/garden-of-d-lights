@@ -6,13 +6,15 @@ Arduino code used to run the Garden of d'Lights at the Ruth Bancroft Garden.
 In December 2018 I was asked if I would like to put together a light show to light up the plants at
 [The Ruth Bancroft Garden](https://www.ruthbancroftgarden.org/) in Walnut Creek, California.
 
+If you like weird and unusual plants and you're not familiar with The Ruth Bancroft Garden, you should come see it.
 [Tripadvisor](https://www.travelandleisure.com/ruth-bancroft-garden-walnut-creek-california-named-most-beautiful-in-world-tripadvisor-data-study-8700410)
 has named The Ruth Bancroft Garden *The most beautiful garden in the world* and
 [The Garden Conservancy](https://www.gardenconservancy.org/preservation/preservation-garden-bancroft)
 says that "The Ruth Bancroft Garden is recognized as one of America's finest
 examples of a dry garden. It features a variety of rare and extraordinary succulents and cacti and
 has a year-round presence, coming in and out of bloom and coloration as if the plants were absorbed
-in a fascinating conversation with each other."
+in a fascinating conversation with each other." It's a world-famous garden which attracts thousands of
+visitors every year.
 
 I spent the next year researching LED and laser lighting to create some unique lighting installations for the garden.
 Some of the installations I created used NeoPixel LED strips and many people have asked me how I created these lights, so
