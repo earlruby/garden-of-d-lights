@@ -72,14 +72,11 @@ To test a strip I attach the NeoPixel signalling wire to pin 0 on the Arduino an
 code. This code is set up for (1) 150 LED NeoPixel strip (a 5m strip with 30 LEDs/m). If that doesn't match what you have just modify the constants to match what you're using. If it works
 you should see blue light pulse through the entire strip, as shown in the video below:
 
-https://github.com/earlruby/garden-of-d-lights/blob/main/images/neopixel-test-2019-05-18-16.48.13.mov
+https://github.com/user-attachments/assets/c9fe2f5a-4bad-4f09-89c5-01fa240ad479
 
 I also wrote some test code to [light the first and last pixels on a strip](light-first-and-last/) (handy when you're soldering multiple strips together) and some code to [test multiple strips at once](neopixel-multi-reel-test/neopixel-multi-reel-test.ino).
 
 ## Dancing Oak AKA "Lava Worms"
-
-![Dancing Oak control box](images/dancing-oak-2019-11-06-20.50.52.jpg?raw=true "Dancing Oak control box")
-![Dancing Oak and Sky Circle control boxes](images/dancing-oak-and-sky-circle-2019-11-07-10.43.38.jpg?raw=true "Dancing Oak and Sky Circle control boxes")
 
 The [original code used in 2019 for the Dancing Oak](dancing-oak/dancing-oak.ino) used multiple colors rotating around and twisting up the oak tree. However, because of the fact that
 the lights were not well-aligned left to right the effect was diminished. I though of programming an offset number of LEDs per light strand so that a strand that was 5 LEDs "lower" than
@@ -93,15 +90,18 @@ them of [lava or worms](lavaworms/lavaworms.ino).
 
 https://github.com/user-attachments/assets/38664de9-6034-44f9-b996-b6a3b1b91b18
 
-# Light Stream
+![Dancing Oak control box](images/dancing-oak-2019-11-06-20.50.52.jpg?raw=true "Dancing Oak control box")
 
-![Light Stream control box](images/lightstream-construction-2019-10-19-11.50.43.jpg?raw=true "Light Stream control box")
+![Dancing Oak and Sky Circle control boxes](images/dancing-oak-and-sky-circle-2019-11-07-10.43.38.jpg?raw=true "Dancing Oak and Sky Circle control boxes")
+
+# Light Stream
 
 For the [Light Stream](light-stream/light-stream.ino) I took (8) 5m NeoPixel strips and soldered them to make (4) 10m strips. Then I attached them to an Arduino Mega programmed to pulse
 in different shades of blue to represent waves of water, while salmon-colored lights swam "upstream". I installed the strips in a winding dry stream bed.
 
-https://github.com/earlruby/garden-of-d-lights/blob/main/images/lightstream-2021-11-12-19.56.13.mov
+https://github.com/user-attachments/assets/70ea6550-c03f-4e6f-92fe-3478b74e0e96
 
+![Light Stream control box](images/lightstream-construction-2019-10-19-11.50.43.jpg?raw=true "Light Stream control box")
 
 # Sky Circle AKA "Fireflies"
 
@@ -112,6 +112,6 @@ Since it was a circle I solved the problem by splitting the strip into (2) 20m s
 On the far side of the circle I physically attached the two strips together using heat shrink tubing, but didn't make an electrical connection. Then I just had to write the
 [Sky Circle Arduino software](sky-circle/sky-circle.ino) so that one pin controlled the first half of the circle and one pin controlled the other half.
 
-![Sky Circle control box](images/sky-circle-2019-11-08-19.39.08.jpg?raw=true "Sky Circle control box")
+https://github.com/user-attachments/assets/738c74fd-415a-4d93-9870-ff317dec2fc3
 
-https://github.com/earlruby/garden-of-d-lights/blob/main/images/sky-circle-2020-12-20-19.51.42.mov
+![Sky Circle control box](images/sky-circle-2019-11-08-19.39.08.jpg?raw=true "Sky Circle control box")
