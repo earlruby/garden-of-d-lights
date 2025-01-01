@@ -18,23 +18,23 @@ I spent the next year researching LED and laser lighting to create some unique l
 Some of the installations I created used NeoPixel LED strips and many people have asked me how I created these lights, so
 I am documenting these installations here, including the Arduino C++ source code used to make the NeoPixels work.
 
-![Earl Ruby at The Garden of D'Lights 2023](images/20240103_193827.jpg?raw=true "Earl Ruby at The Garden of D'Lights")
+![Earl Ruby at The Garden of D'Lights 2023](https://github.com/user-attachments/assets/689efe21-520c-48b4-a2b4-eabd67aaabf4?raw=true "Earl Ruby at The Garden of D'Lights")
 
 ### GoDL 2023 - Valley Oak with color-changing Japanese Lanterns
 
-![GoDL 2023 - Valley Oak with color-changing Japanese Lanterns](images/2023-12-01%2017.24.02.jpg?raw=true "GoDL 2023 - Valley Oak with color-changing Japanese Lanterns")
+![GoDL 2023 - Valley Oak with color-changing Japanese Lanterns](https://github.com/user-attachments/assets/d66be449-c8e8-40fe-b984-aded4aec3a77?raw=true "GoDL 2023 - Valley Oak with color-changing Japanese Lanterns")
 
 ### GoDL 2023 - LED lighting on plants behind the pond
 
-![GoDL 2023 - LED lighting on plants behind the pond](images/2023-12-01%2018.03.59.jpg?raw=true "GoDL 2023 - LED lighting on plants behind the pond")
+![GoDL 2023 - LED lighting on plants behind the pond](https://github.com/user-attachments/assets/4a124cfb-78de-4493-a8ea-ad4ca9bcddfc?raw=true "GoDL 2023 - LED lighting on plants behind the pond")
 
 ### GoDL 2023 - LED lighting on agaves
 
-![GoDL 2023 - LED lighting on agaves](images/2023-12-01%2019.57.56.jpg?raw=true "GoDL 2023 - LED lighting on agaves")
+![GoDL 2023 - LED lighting on agaves](https://github.com/user-attachments/assets/74f7c66a-85f3-4473-a67f-07c514939aef?raw=true "GoDL 2023 - LED lighting on agaves")
 
 ### GoDL 2020 - Koi Pond
 
-![GoDL 2020 - Koi Pond](images/2020-12-11%2019.53.01.jpg?raw=true "GoDL 2020 - Koi Pond")
+![GoDL 2020 - Koi Pond](https://github.com/user-attachments/assets/5c92f53f-44ad-4a65-9cb7-958bfabed4bc?raw=true "GoDL 2020 - Koi Pond")
 
 ## NeoPixels
 
@@ -124,11 +124,11 @@ https://github.com/user-attachments/assets/3c70c2b6-749a-4daa-8c25-bc230bbb312b
 
 ### Dancing Oak control box
 
-![Dancing Oak control box](images/dancing-oak-2019-11-06-20.50.52.jpg?raw=true "Dancing Oak control box")
+![Dancing Oak control box](https://github.com/user-attachments/assets/05e29a64-d8e6-47fa-b8a6-5335a3fa322f?raw=true "Dancing Oak control box")
 
 ### Dancing Oak and Sky Triangle control boxes
 
-![Dancing Oak and Sky Triangle control boxes](images/dancing-oak-and-sky-triangle-2019-11-07-10.43.38.jpg?raw=true "Dancing Oak and Sky Triangle control boxes")
+![Dancing Oak and Sky Triangle control boxes](https://github.com/user-attachments/assets/1c967ad1-2080-41ac-b8b2-c9b8cb82cc13?raw=true "Dancing Oak and Sky Triangle control boxes")
 
 ## Light Stream
 
@@ -141,7 +141,7 @@ https://github.com/user-attachments/assets/70ea6550-c03f-4e6f-92fe-3478b74e0e96
 
 ### Light Stream control box (in progress)
 
-![Light Stream control box](images/lightstream-construction-2019-10-19-11.50.43.jpg?raw=true "Light Stream control box")
+![Light Stream control box](https://github.com/user-attachments/assets/598d35a6-69ad-445e-bd81-6ad09aba8955?raw=true "Light Stream control box")
 
 ## Sky Triangle AKA "Fireflies"
 
@@ -158,7 +158,7 @@ https://github.com/user-attachments/assets/738c74fd-415a-4d93-9870-ff317dec2fc3
 
 ### Sky Triangle control box
 
-![Sky Triangle control box](images/sky-triangle-2019-11-08-19.39.08.jpg?raw=true "Sky Triangle control box")
+![Sky Triangle control box](https://github.com/user-attachments/assets/c7c01816-1c71-4b33-95b3-6f6bc30315f1?raw=true "Sky Triangle control box")
 
 # Need Help?
 
