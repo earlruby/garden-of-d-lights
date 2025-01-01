@@ -4,7 +4,7 @@
 // accept code.  So upload code first, unplug USB, connect pixels
 // to GND FIRST, then +5V and digital pin 6, then re-plug USB.
 // A working strip will show a few pixels moving down the line,
-// cycling between red, green and blue.  If you get no response,
+// cycling between different shade of blue.  If you get no response,
 // might be connected to wrong end of strip -- look for the data
 // direction arrows printed on the strip.
 
@@ -41,12 +41,12 @@ static void chase(uint32_t c) {
           strip.setPixelColor(i+(b*band_length), c);                  // Draw new pixel
           strip.setPixelColor(i+(b*band_length)-pixels_to_light, 0);  // Erase pixel a few steps back
       }
-      
+
       // Erase the last pixels on the strip from the previous run
       if (i<=pixels_to_light) {
           strip.setPixelColor(strip.numPixels()-1-pixels_to_light+i, 0);
       }
-      
+
       strip.show();
       delay(35);
   }

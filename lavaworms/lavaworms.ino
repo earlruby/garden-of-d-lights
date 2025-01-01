@@ -1,4 +1,4 @@
-// Life Stream
+// Lava Worms
 
 // Waves of blue and green pulsing up 12 x 5m strands of NeoPixel
 // lights running across the ground from agave to agave.
@@ -9,7 +9,7 @@
 
 // NeoPixel data wires plugged into Arduino pins 0-11, NeoPixel
 // ground wires all connected to common ground. NeoPixel power
-// lines plugged into two 5V 20A brick power supplies. 
+// lines plugged into two 5V 20A brick power supplies.
 
 #include <Adafruit_NeoPixel.h>
 
@@ -79,15 +79,15 @@ static void stream(uint32_t c, uint32_t c_inc) {
           strip[p].setPixelColor(i+(b*band_length)-pixels_to_light, 0);  // Erase pixel a few steps back
         }
       }
-      
+
       // Erase the last pixels on the strip from the previous run
       if (i<=pixels_to_light) {
         for (int p = 0; p < N_REELS; p++) {
           strip[p].setPixelColor(strip[p].numPixels()-1-pixels_to_light+i, 0);
         }
       }
-  
-      for (int p = 0; p < N_REELS; p++) {      
+
+      for (int p = 0; p < N_REELS; p++) {
         strip[p].show();
       }
       delay(5);

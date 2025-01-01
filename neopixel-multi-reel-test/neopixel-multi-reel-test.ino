@@ -3,12 +3,12 @@
 // Waves of blue pulsing down multiple 5m strands of NeoPixel lights.
 // NeoPixel data wires plugged into Arduino pins 0-n, NeoPixel
 // ground wires all connected to common ground. NeoPixel power
-// lines plugged into 5V 20A brick power supply. 
+// lines plugged into 5V 20A brick power supply.
 
 #include <Adafruit_NeoPixel.h>
 
-#define N_LEDS  150     // 10 meter reel @ 30 LEDs/m
-#define N_REELS 12      // Use pins 0 through N_REELS-1 to control each reel of NeoPixels 
+#define N_LEDS  150     // 5 meter reel @ 30 LEDs/m
+#define N_REELS 12      // Use pins 0 through N_REELS-1 to control each reel of NeoPixels
 
 Adafruit_NeoPixel strip[N_REELS];
 
@@ -19,7 +19,7 @@ void setup() {
 
     // Clear the reels
     strip[p].clear();
-  }  
+  }
 }
 
 void loop() {
@@ -39,9 +39,9 @@ static void stream(uint32_t c) {
   uint16_t pixels_to_light = 5;
   uint16_t bands = 5;
   uint16_t band_length = floor(strip[0].numPixels()/bands);
-  
+
   for(uint16_t i=0; i<band_length; i++) {
-    
+
     // Draw colored blue bands for waves
     for(uint16_t b=0; b<bands; b++) {
       for (int p = 0; p < N_REELS; p++) {
@@ -49,7 +49,7 @@ static void stream(uint32_t c) {
         strip[p].setPixelColor(i+(b*band_length)-pixels_to_light, 0);  // Erase pixel a few steps back
       }
     }
-    
+
     // Erase the last pixels on the strip from the previous run
     if (i<=pixels_to_light) {
       for (int p = 0; p < N_REELS; p++) {

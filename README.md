@@ -13,11 +13,13 @@ I am documenting these installations here.
 
 ![Earl Ruby at The Garden of D'Lights 2023](images/20240103_193827.jpg "Earl Ruby at The Garden of D'Lights")
 
-![GoDL 2023](images/2023-12-01%2017.24.02.jpg)
+![GoDL 2023 - Valley Oak with color-changing Japanese Lanterns](images/2023-12-01%2017.24.02.jpg "GoDL 2023 - Valley Oak with color-changing Japanese Lanterns")
 
-![GoDL 2023](images/2023-12-01%2018.03.59.jpg)
+![GoDL 2023 - LED lighting on plants behind the pond](images/2023-12-01%2018.03.59.jpg "GoDL 2023 - LED lighting on plants behind the pond")
 
-![GoDL 2023](images/2023-12-01%2019.57.56.jpg)
+![GoDL 2023 - LED lighting on agaves](images/2023-12-01%2019.57.56.jpg "GoDL 2023 - LED lighting on agaves")
+
+![GoDL 2020 - Koi Pond](images/2020-12-11%2019.53.01.jpg "GoDL 2020 - Koi Pond")
 
 ## NeoPixels
 
@@ -26,13 +28,13 @@ If you're planning on building anything I recommend that you do the same. The gu
 
 I built 3 different NeoPixel installations:
 
-* Dancing Oak - The garden has a 200+ year old Valley Oak tree with a trunk that has a 4m (13 foot) circumference. My plan was to run (12) separate 5m strips
+* **Dancing Oak** - The garden has a 200+ year old Valley Oak tree with a trunk that has a 4m (13 foot) circumference. My plan was to run (12) separate 5m strips
   of NeoPixels up the trunk spaced 0.3m (1 foot) apart and held in place with black bungee cords. The NeoPixels would travel up the trunk into the branches until
   we got to the end of a strip. The lights would pulse up from the earth and make the tree appear to spin and "dance". For the 2023 show I moved the lights from
   the Oak tree to a hillside at the back of the garden where people say it reminds them of a lava flow or large glowing worms.
-* Light Stream - There was a dry stream bed in the garden and I wanted to make it light up as if there was water and fish in it. I took (4) 10m NeoPixel strips
+* **Light Stream** - There was a dry stream bed in the garden and I wanted to make it light up as if there was water and fish in it. I took (4) 10m NeoPixel strips
   to make the stream. The lights were programmed to pulse in different shades of blue to represent waves of water, while salmon-colored lights swam "upstream".
-* Sky Circle - Originally envisisoned as a 40m cicumference circle of lights suspended 4.5m-6m (15-20 feet) in the air, making a rigid circle wasn't practical
+* **Sky Circle** - Originally envisisoned as a 40m cicumference circle of lights suspended 4.5m-6m (15-20 feet) in the air, making a rigid circle wasn't practical
   for the site so I ended up using steel cable mounted to three trees in the garden's Eyucalyptus Grove and created a "Sky Triangle" instead. The effect still
   works, and mesmerizes people passing through the grove every night of the event. Many guests refer to the effect as "fireflies" or "glowing orbs", six lights
   chase each other around the sides of the triangle, sometimes passing through one another and sometimes bouncing off each other.
@@ -72,16 +74,44 @@ you should see blue light pulse through the entire strip, as shown in the video 
 
 https://github.com/earlruby/garden-of-d-lights/blob/main/images/neopixel-test-2019-05-18-16.48.13.mov
 
-## Dancing Oak AKA "Lava"
+I also wrote some test code to [light the first and last pixels on a strip](light-first-and-last/) (handy when you're soldering multiple strips together) and some code to [test multiple strips at once](neopixel-multi-reel-test/neopixel-multi-reel-test.ino).
+
+## Dancing Oak AKA "Lava Worms"
 
 ![Dancing Oak control box](images/dancing-oak-2019-11-06-20.50.52.jpg?raw=true "Dancing Oak control box")
 ![Dancing Oak and Sky Circle control boxes](images/dancing-oak-and-sky-circle-2019-11-07-10.43.38.jpg?raw=true "Dancing Oak and Sky Circle control boxes")
+
+The [original code used in 2019 for the Dancing Oak](dancing-oak/dancing-oak.ino) used multiple colors rotating around and twisting up the oak tree. However, because of the fact that
+the lights were not well-aligned left to right the effect was diminished. I though of programming an offset number of LEDs per light strand so that a strand that was 5 LEDs "lower" than
+the one next to it would be offset by 5 LEDs and then the lights would line up left to right, and then reprogramming the controller after installation with the "as installed" offset, but
+due to the uneven nature of the oak's trunk an offset that worked at the base might start to look "off" 1 or 2m up the tree, so I abandoned that idea.
+
+Instead [I changed the entire program in 2020](dancing-oak-2020/dancing-oak-2020.ino) and made the lights go from the base of the tree pulsing up, abandoning the counter-clockwise sprial.
+
+In 2023 I installed color-changing Japanese Lanterns in the oak tree and moved the NeoPixel installation to a hillside at the back of the garden, where most guests decided that it reminded
+them of [lava or worms](lavaworms/lavaworms.ino).
+
+images/dancing-oak-2020-12-18-18.24.18.mov
 
 # Light Stream
 
 ![Light Stream control box](images/lightstream-construction-2019-10-19-11.50.43.jpg?raw=true "Light Stream control box")
 
+For the [Light Stream](light-stream/light-stream.ino) I took (8) 5m NeoPixel strips and soldered them to make (4) 10m strips. Then I attached them to an Arduino Mega programmed to pulse
+in different shades of blue to represent waves of water, while salmon-colored lights swam "upstream". I installed the strips in a winding dry stream bed.
+
+https://github.com/earlruby/garden-of-d-lights/blob/main/images/lightstream-2021-11-12-19.56.13.mov
+
 
 # Sky Circle AKA "Fireflies"
 
+For the Sky Circle I originally took (8) 5m NeoPixel strips and connected them all together to make one long 40m strip. However, I found out that the signal strength of an Arduino Mega
+drops off after about 25m, so I couldn't get a consistent, stable signal to the LEDs at the end of the strip.
+
+Since it was a circle I solved the problem by splitting the strip into (2) 20m sections and connecting both to the the Arduino, so the 2 signalling pins each controlled half the circle.
+On the far side of the circle I physically attached the two strips together using heat shrink tubing, but didn't make an electrical connection. Then I just had to write the
+[Sky Circle Arduino software](sky-circle/sky-circle.ino) so that one pin controlled the first half of the circle and one pin controlled the other half.
+
 ![Sky Circle control box](images/sky-circle-2019-11-08-19.39.08.jpg?raw=true "Sky Circle control box")
+
+https://github.com/earlruby/garden-of-d-lights/blob/main/images/sky-circle-2020-12-20-19.51.42.mov

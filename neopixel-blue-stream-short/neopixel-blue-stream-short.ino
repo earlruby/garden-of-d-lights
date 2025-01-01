@@ -3,12 +3,12 @@
 // Waves of blue pulsing down 4 x 30m strands of NeoPixel lights.
 // NeoPixel data wires plugged into Arduino pins 0-3, NeoPixel
 // ground wires all connected to common ground. NeoPixel power
-// lines plugged into 5V 20A brick power supply. 
+// lines plugged into 5V 20A brick power supply.
 
 #include <Adafruit_NeoPixel.h>
 
-#define N_LEDS  150     // 10 meter reel @ 30 LEDs/m
-#define N_REELS 4       // Use pins 0 through N_REELS-1 to control each reel of NeoPixels 
+#define N_LEDS  150     // 5 meter reel @ 30 LEDs/m
+#define N_REELS 4       // Use pins 0 through N_REELS-1 to control each reel of NeoPixels
 #define N_FISH  3       // Number of fish swimming upstream per reel
 
 Adafruit_NeoPixel strip[N_REELS];
@@ -24,7 +24,7 @@ void setup() {
   for (int p = 0; p < N_REELS; p++) {
     strip[p] = Adafruit_NeoPixel(N_LEDS, p, NEO_GRB + NEO_KHZ800);
     strip[p].begin();
-    
+
     for (int f = 0; f < N_FISH; f++) {
       fish[f][p]= strip[p].numPixels() - 1 - (f * initial_fish_spacing);
     }
@@ -39,7 +39,7 @@ void setup() {
   fish_color[0] = 0xFF6666;
   fish_color[1] = 0xFFCC66;
   fish_color[2] = 0xFFFF99;
-  
+
 }
 
 void loop() {
@@ -59,13 +59,13 @@ static void stream(uint32_t c) {
   uint16_t pixels_to_light = 15;
   uint16_t bands = 6;
   uint16_t band_length = floor(strip[0].numPixels()/bands);
-  
+
   for(uint16_t i=0; i<band_length; i++) {
-    
+
     for (int p = 0; p < N_REELS; p++) {
       for (int f = 0; f < N_FISH; f++) {
         strip[p].setPixelColor(fish[f][p], c);   // Erase previous fish with water color
-  
+
         // Move the fish upstream 2/5 of the time
         if (random(1, 6) < 3) {
           fish[f][p]--;
@@ -76,7 +76,7 @@ static void stream(uint32_t c) {
         }
       }
     }
-    
+
     // Draw colored blue bands for waves
     for(uint16_t b=0; b<bands; b++) {
       for (int p = 0; p < N_REELS; p++) {
@@ -85,7 +85,7 @@ static void stream(uint32_t c) {
       }
     }
 
-    
+
     // Erase the last pixels on the strip from the previous run
     if (i<=pixels_to_light) {
       for (int p = 0; p < N_REELS; p++) {
