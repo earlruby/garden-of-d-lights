@@ -163,3 +163,9 @@ https://github.com/user-attachments/assets/738c74fd-415a-4d93-9870-ff317dec2fc3
 # Need Help?
 
 If you need help try asking in the "LEDs ARE AWESOME" Facebook Group. You can usually find me (and lots of other helpful people) there.
+
+# License
+
+GNU General Public License v3.0 or later
+
+See [COPYING](./COPYING) to see the full text.
