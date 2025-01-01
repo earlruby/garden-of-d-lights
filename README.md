@@ -18,23 +18,23 @@ I spent the next year researching LED and laser lighting to create some unique l
 Some of the installations I created used NeoPixel LED strips and many people have asked me how I created these lights, so
 I am documenting these installations here, including the Arduino C++ source code used to make the NeoPixels work.
 
-![Earl Ruby at The Garden of D'Lights 2023](images/20240103_193827.jpg "Earl Ruby at The Garden of D'Lights")
+![Earl Ruby at The Garden of D'Lights 2023](images/20240103_193827.jpg?raw=true "Earl Ruby at The Garden of D'Lights")
 
 ### GoDL 2023 - Valley Oak with color-changing Japanese Lanterns
 
-![GoDL 2023 - Valley Oak with color-changing Japanese Lanterns](images/2023-12-01%2017.24.02.jpg "GoDL 2023 - Valley Oak with color-changing Japanese Lanterns")
+![GoDL 2023 - Valley Oak with color-changing Japanese Lanterns](images/2023-12-01%2017.24.02.jpg?raw=true "GoDL 2023 - Valley Oak with color-changing Japanese Lanterns")
 
 ### GoDL 2023 - LED lighting on plants behind the pond
 
-![GoDL 2023 - LED lighting on plants behind the pond](images/2023-12-01%2018.03.59.jpg "GoDL 2023 - LED lighting on plants behind the pond")
+![GoDL 2023 - LED lighting on plants behind the pond](images/2023-12-01%2018.03.59.jpg?raw=true "GoDL 2023 - LED lighting on plants behind the pond")
 
 ### GoDL 2023 - LED lighting on agaves
 
-![GoDL 2023 - LED lighting on agaves](images/2023-12-01%2019.57.56.jpg "GoDL 2023 - LED lighting on agaves")
+![GoDL 2023 - LED lighting on agaves](images/2023-12-01%2019.57.56.jpg?raw=true "GoDL 2023 - LED lighting on agaves")
 
 ### GoDL 2020 - Koi Pond
 
-![GoDL 2020 - Koi Pond](images/2020-12-11%2019.53.01.jpg "GoDL 2020 - Koi Pond")
+![GoDL 2020 - Koi Pond](images/2020-12-11%2019.53.01.jpg?raw=true "GoDL 2020 - Koi Pond")
 
 ## NeoPixels
 
