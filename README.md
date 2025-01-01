@@ -13,11 +13,19 @@ I am documenting these installations here.
 
 ![Earl Ruby at The Garden of D'Lights 2023](images/20240103_193827.jpg "Earl Ruby at The Garden of D'Lights")
 
+### GoDL 2023 - Valley Oak with color-changing Japanese Lanterns
+
 ![GoDL 2023 - Valley Oak with color-changing Japanese Lanterns](images/2023-12-01%2017.24.02.jpg "GoDL 2023 - Valley Oak with color-changing Japanese Lanterns")
+
+### GoDL 2023 - LED lighting on plants behind the pond
 
 ![GoDL 2023 - LED lighting on plants behind the pond](images/2023-12-01%2018.03.59.jpg "GoDL 2023 - LED lighting on plants behind the pond")
 
+### GoDL 2023 - LED lighting on agaves
+
 ![GoDL 2023 - LED lighting on agaves](images/2023-12-01%2019.57.56.jpg "GoDL 2023 - LED lighting on agaves")
+
+### GoDL 2020 - Koi Pond
 
 ![GoDL 2020 - Koi Pond](images/2020-12-11%2019.53.01.jpg "GoDL 2020 - Koi Pond")
 
@@ -88,22 +96,36 @@ Instead [I changed the entire program in 2020](dancing-oak-2020/dancing-oak-2020
 In 2023 I installed color-changing Japanese Lanterns in the oak tree and moved the NeoPixel installation to a hillside at the back of the garden, where most guests decided that it reminded
 them of [lava or worms](lavaworms/lavaworms.ino).
 
+### Dancing Oak
+
 https://github.com/user-attachments/assets/38664de9-6034-44f9-b996-b6a3b1b91b18
+
+### Lava Worms
+
+https://github.com/user-attachments/assets/3c70c2b6-749a-4daa-8c25-bc230bbb312b
+
+### Dancing Oak control box
 
 ![Dancing Oak control box](images/dancing-oak-2019-11-06-20.50.52.jpg?raw=true "Dancing Oak control box")
 
+### Dancing Oak and Sky Circle control boxes
+
 ![Dancing Oak and Sky Circle control boxes](images/dancing-oak-and-sky-circle-2019-11-07-10.43.38.jpg?raw=true "Dancing Oak and Sky Circle control boxes")
 
-# Light Stream
+## Light Stream
 
 For the [Light Stream](light-stream/light-stream.ino) I took (8) 5m NeoPixel strips and soldered them to make (4) 10m strips. Then I attached them to an Arduino Mega programmed to pulse
 in different shades of blue to represent waves of water, while salmon-colored lights swam "upstream". I installed the strips in a winding dry stream bed.
 
+### Light Stream
+
 https://github.com/user-attachments/assets/70ea6550-c03f-4e6f-92fe-3478b74e0e96
+
+### Light Stream control box (in progress)
 
 ![Light Stream control box](images/lightstream-construction-2019-10-19-11.50.43.jpg?raw=true "Light Stream control box")
 
-# Sky Circle AKA "Fireflies"
+## Sky Circle AKA "Fireflies"
 
 For the Sky Circle I originally took (8) 5m NeoPixel strips and connected them all together to make one long 40m strip. However, I found out that the signal strength of an Arduino Mega
 drops off after about 25m, so I couldn't get a consistent, stable signal to the LEDs at the end of the strip.
@@ -112,6 +134,10 @@ Since it was a circle I solved the problem by splitting the strip into (2) 20m s
 On the far side of the circle I physically attached the two strips together using heat shrink tubing, but didn't make an electrical connection. Then I just had to write the
 [Sky Circle Arduino software](sky-circle/sky-circle.ino) so that one pin controlled the first half of the circle and one pin controlled the other half.
 
+### Sky Circle
+
 https://github.com/user-attachments/assets/738c74fd-415a-4d93-9870-ff317dec2fc3
+
+### Sky Circle control box
 
 ![Sky Circle control box](images/sky-circle-2019-11-08-19.39.08.jpg?raw=true "Sky Circle control box")
