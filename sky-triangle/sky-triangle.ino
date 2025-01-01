@@ -1,7 +1,7 @@
-// Sky Circle
+// Sky Triangle
 
-// Neopixels arranged in a large circle, suspended 15' in the air.
-// Small orbs chase each other around the circle, speed up, slow
+// Neopixels arranged in a large triangle, suspended 15' in the air.
+// Small orbs chase each other around the triangle, speed up, slow
 // down, change direction, and bounce off one another.
 
 #include <Adafruit_NeoPixel.h>
@@ -31,7 +31,7 @@ int tPosition;
 void setup() {
   randomSeed(analogRead(0));  // Initialize random number generator using analog noise
   speedCtr = 0;
-  
+
   orbColor[0] = 0x008080; // Teal
   orbColor[1] = 0xFF00FF; // Magenta
   orbColor[2] = 0xFFA500; // Orange
@@ -58,7 +58,7 @@ static void draw_pixel(uint16_t pixel, uint32_t color) {
     // First half is reel 0, pixels are lit from 0 to 599
     reel[0].setPixelColor(pixel, color);
   } else {
-    // Second half of the circle is reel 1, pixels are lit from 600 to 0, e.g.:
+    // Second half of the triangle is reel 1, pixels are lit from 600 to 0, e.g.:
     // If pixel = 600, light pixel 599
     // If pixel = 601, light pixel 598
     // If pixel = 602, light pixel 597
@@ -94,7 +94,7 @@ void loop() {
     for (int a = 0; a < N_ORBS; a++) {
       for (int b = a+1; b < N_ORBS; b++) {
         if (orbPosition[a] == orbPosition[b] and orbCollide[a] == false and orbCollide[b] == false) {
-          
+
           // Transfer momentum
           int speed = orbSpeed[a];
           orbSpeed[a] = orbSpeed[b];
@@ -106,7 +106,7 @@ void loop() {
           } else {
              // Change direction
              orbDirection[a] *= -1;
-             orbDirection[b] *= -1;           
+             orbDirection[b] *= -1;
           }
 
           // Don't recalculate collisions until the orb has been moved
@@ -115,14 +115,14 @@ void loop() {
         }
       }
     }
- 
+
     // Draw where the orb is now
     draw_pixel(orbPosition[i], orbColor[i]);
   }
 
   reel[0].show();
   reel[1].show();
-  
+
   speedCtr++;
   if (speedCtr > MAX_SPEED) {
     speedCtr = 0;

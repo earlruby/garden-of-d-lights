@@ -3,13 +3,20 @@ Arduino code used to run the Garden of d'Lights at the Ruth Bancroft Garden.
 
 ## The Ruth Bancroft Garden
 
-In December 2018 I was asked if I would like to put together a light show to light uup the plants at
-[The Ruth Bancroft Garden](https://www.ruthbancroftgarden.org/) in Walnut Creek, California. A garden named
-*The most beautiful garden in the world* by [Tripadvisor](https://www.travelandleisure.com/ruth-bancroft-garden-walnut-creek-california-named-most-beautiful-in-world-tripadvisor-data-study-8700410).
+In December 2018 I was asked if I would like to put together a light show to light up the plants at
+[The Ruth Bancroft Garden](https://www.ruthbancroftgarden.org/) in Walnut Creek, California.
+
+[Tripadvisor](https://www.travelandleisure.com/ruth-bancroft-garden-walnut-creek-california-named-most-beautiful-in-world-tripadvisor-data-study-8700410)
+has named The Ruth Bancroft Garden *The most beautiful garden in the world* and
+[The Garden Conservancy](https://www.gardenconservancy.org/preservation/preservation-garden-bancroft)
+says that "The Ruth Bancroft Garden is recognized as one of America's finest
+examples of a dry garden. It features a variety of rare and extraordinary succulents and cacti and
+has a year-round presence, coming in and out of bloom and coloration as if the plants were absorbed
+in a fascinating conversation with each other."
 
 I spent the next year researching LED and laser lighting to create some unique lighting installations for the garden.
-Some of the installations used NeoPixel LED strips and many people have asked me how I created these lights, so
-I am documenting these installations here.
+Some of the installations I created used NeoPixel LED strips and many people have asked me how I created these lights, so
+I am documenting these installations here, including the Arduino C++ source code used to make the NeoPixels work.
 
 ![Earl Ruby at The Garden of D'Lights 2023](images/20240103_193827.jpg "Earl Ruby at The Garden of D'Lights")
 
@@ -32,7 +39,8 @@ I am documenting these installations here.
 ## NeoPixels
 
 I started researching NeoPixels by reading and re-reading the [Adafruit NeoPixel Überguide](https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels).
-If you're planning on building anything I recommend that you do the same. The guide is your best place to get started.
+If you're planning on building anything I recommend that you do the same. **The Überguide is your best place to get started.** I will not be repeating information here
+that's already covered in The Überguide, so if I say something here that doesn't quite made sense go back and read The Überguide again.
 
 I built 3 different NeoPixel installations:
 
@@ -40,10 +48,11 @@ I built 3 different NeoPixel installations:
   of NeoPixels up the trunk spaced 0.3m (1 foot) apart and held in place with black bungee cords. The NeoPixels would travel up the trunk into the branches until
   we got to the end of a strip. The lights would pulse up from the earth and make the tree appear to spin and "dance". For the 2023 show I moved the lights from
   the Oak tree to a hillside at the back of the garden where people say it reminds them of a lava flow or large glowing worms.
-* **Light Stream** - There was a dry stream bed in the garden and I wanted to make it light up as if there was water and fish in it. I took (4) 10m NeoPixel strips
-  to make the stream. The lights were programmed to pulse in different shades of blue to represent waves of water, while salmon-colored lights swam "upstream".
-* **Sky Circle** - Originally envisisoned as a 40m cicumference circle of lights suspended 4.5m-6m (15-20 feet) in the air, making a rigid circle wasn't practical
-  for the site so I ended up using steel cable mounted to three trees in the garden's Eyucalyptus Grove and created a "Sky Triangle" instead. The effect still
+* **Light Stream** - There is a dry stream bed in the garden and I wanted to make it appear as if there was water flowing through and fish swimming in it. I took
+  (4) 10m NeoPixel strips to make the stream. The lights were programmed to pulse in different shades of blue to represent waves of water, while salmon-colored
+  lights swam "upstream".
+* **Sky ~~Circle~~ Triangle** - Originally envisisoned as a 40m cicumference circle of lights suspended 4.5m-6m (15-20 feet) in the air, making a rigid circle wasn't practical
+  for the site so I ended up using steel cable mounted to three trees in the garden's Eucalyptus Grove and created a "Sky Triangle" instead. The effect still
   works, and mesmerizes people passing through the grove every night of the event. Many guests refer to the effect as "fireflies" or "glowing orbs", six lights
   chase each other around the sides of the triangle, sometimes passing through one another and sometimes bouncing off each other.
 
@@ -59,9 +68,9 @@ For all three installations I used:
   supply connectors inside the case.
 * Terminal screw blocks for connecting cables to power.
 
-An Arduino is a simple microcontroller that can be programmed to do simple tasks, such as to send a signal to a NeoPixel strip that tells Pixel #117 to glow purple.
+An Arduino is a low-power microcontroller that can be programmed to do simple tasks, such as to send a signal to a NeoPixel strip that tells Pixel #117 to glow purple.
 An Arduino will send whatever signals you tell it to send, over and over and over again, for as long as it has power. To program an Arduino you use a USB cable
-connected between your laptop and the Arduino. You write the code on your laptop, send it
+connected between your laptop and the Arduino. You write the code on your laptop, send it to the Arduino, unplug your laptop, and power up the Arduino.
 
 Each NeoPixel strip is controlled by 3 wires: black (GND), red (+5VDC), and yellow (signaling, sometimes labeled DIN). The 5VDC @ 20A "brick" power supplies I use have a barrel connector
 on the end, but if you cut that off you'll find 2 wires inside the cable: black (GND) and red (+5VDC). If your project requires more power you can get a supply that provides more amps
@@ -71,8 +80,13 @@ For what it's worth, a single 5VDC@20A supply running at maximum capacity is dra
 careful when you're working around live electrical sources.
 
 To get a strip to work you have to connect the NeoPixel's DC+ to the power supply's DC+ (red to red), the NeoPixel's GND to the power supply's GND and the Arduino's GND (black to black),
-and the NeoPixel's signalling wire through a 370 Ohm resistor to one of the digital signalling pins on the Arduino. You also need to provide power to the Arduino itself. Refer to the
-[Adafruit NeoPixel Überguide Basic Connections page](https://learn.adafruit.com/adafruit-neopixel-uberguide/basic-connections) for details.
+and the NeoPixel's signalling wire through a 370 Ohm resistor to one of the digital signalling pins on the Arduino.
+
+You also need to provide power to the Arduino itself. When programming the Arduino, the Arduino gets all of the power it needs from the USB cable. When you're done programming it still
+needs to get power from somewhere. I usually take an old USB cable, cut it in half, and connect the USB connector's red and black power wires directly to the power supply's red and black
+power wires. When I'm done programming the Arduino I just replace the USB cable that connects my laptop to the Arduino with the cable from the power supply to the Arduino.
+
+Refer to the [Adafruit NeoPixel Überguide Basic Connections page](https://learn.adafruit.com/adafruit-neopixel-uberguide/basic-connections) for wiring details.
 
 ## Testing NeoPixels
 
@@ -108,9 +122,9 @@ https://github.com/user-attachments/assets/3c70c2b6-749a-4daa-8c25-bc230bbb312b
 
 ![Dancing Oak control box](images/dancing-oak-2019-11-06-20.50.52.jpg?raw=true "Dancing Oak control box")
 
-### Dancing Oak and Sky Circle control boxes
+### Dancing Oak and Sky Triangle control boxes
 
-![Dancing Oak and Sky Circle control boxes](images/dancing-oak-and-sky-circle-2019-11-07-10.43.38.jpg?raw=true "Dancing Oak and Sky Circle control boxes")
+![Dancing Oak and Sky Triangle control boxes](images/dancing-oak-and-sky-triangle-2019-11-07-10.43.38.jpg?raw=true "Dancing Oak and Sky Triangle control boxes")
 
 ## Light Stream
 
@@ -125,19 +139,23 @@ https://github.com/user-attachments/assets/70ea6550-c03f-4e6f-92fe-3478b74e0e96
 
 ![Light Stream control box](images/lightstream-construction-2019-10-19-11.50.43.jpg?raw=true "Light Stream control box")
 
-## Sky Circle AKA "Fireflies"
+## Sky Triangle AKA "Fireflies"
 
-For the Sky Circle I originally took (8) 5m NeoPixel strips and connected them all together to make one long 40m strip. However, I found out that the signal strength of an Arduino Mega
+For the Sky Triangle I originally took (8) 5m NeoPixel strips and connected them all together to make one long 40m strip. However, I found out that the signal strength of an Arduino Mega
 drops off after about 25m, so I couldn't get a consistent, stable signal to the LEDs at the end of the strip.
 
-Since it was a circle I solved the problem by splitting the strip into (2) 20m sections and connecting both to the the Arduino, so the 2 signalling pins each controlled half the circle.
-On the far side of the circle I physically attached the two strips together using heat shrink tubing, but didn't make an electrical connection. Then I just had to write the
-[Sky Circle Arduino software](sky-circle/sky-circle.ino) so that one pin controlled the first half of the circle and one pin controlled the other half.
+Since it was a triangle I solved the problem by splitting the strip into (2) 20m sections and connecting both to the the Arduino, so the 2 signalling pins each controlled half the triangle.
+On the far side of the triangle I physically attached the two strips together using heat shrink tubing, but didn't make an electrical connection. Then I just had to write the
+[Sky Triangle Arduino software](sky-triangle/sky-triangle.ino) so that one pin controlled the first half of the triangle and one pin controlled the other half.
 
-### Sky Circle
+### Sky Triangle
 
 https://github.com/user-attachments/assets/738c74fd-415a-4d93-9870-ff317dec2fc3
 
-### Sky Circle control box
+### Sky Triangle control box
 
-![Sky Circle control box](images/sky-circle-2019-11-08-19.39.08.jpg?raw=true "Sky Circle control box")
+![Sky Triangle control box](images/sky-triangle-2019-11-08-19.39.08.jpg?raw=true "Sky Triangle control box")
+
+# Need Help?
+
+If you need help try asking in the "LEDs ARE AWESOME" Facebook Group. You can usually find me (and lots of other helpful people) there.
