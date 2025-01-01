@@ -58,7 +58,8 @@ I built 3 different NeoPixel installations:
 
 For all three installations I used:
 
-* An Arduino "Mega" microcontroller.
+* An Arduino "Mega" microcontroller. (I originally used Arduino "Metro" boards, then found out that they didn't have enough RAM for the number of LEDs I was using,
+  so I replaced them with "Mega" boards which come with more RAM.)
 * One or two 5VDC @ 20A "brick" power supplies.
 * A 1000uF capacitor connected across the DC power supply to protect the Arduino and NeoPixels from power surges.
 * A 470 Ohm resistor between the Arduino data pins and the NeoPixel signal line for each NeoPixel strip connected to the Arduino.
