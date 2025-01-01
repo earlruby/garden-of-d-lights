@@ -91,7 +91,7 @@ Instead [I changed the entire program in 2020](dancing-oak-2020/dancing-oak-2020
 In 2023 I installed color-changing Japanese Lanterns in the oak tree and moved the NeoPixel installation to a hillside at the back of the garden, where most guests decided that it reminded
 them of [lava or worms](lavaworms/lavaworms.ino).
 
-images/dancing-oak-2020-12-18-18.24.18.mov
+https://github.com/user-attachments/assets/38664de9-6034-44f9-b996-b6a3b1b91b18
 
 # Light Stream
 
