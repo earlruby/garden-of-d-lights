@@ -53,7 +53,7 @@ I built 3 different NeoPixel installations:
   lights swam "upstream".
 * **Sky ~~Circle~~ Triangle** - Originally envisisoned as a 40m cicumference circle of lights suspended 4.5m-6m (15-20 feet) in the air, making a rigid circle wasn't practical
   for the site so I ended up using steel cable mounted to three trees in the garden's Eucalyptus Grove and created a "Sky Triangle" instead. The effect still
-  works, and mesmerizes people passing through the grove every night of the event. Many guests refer to the effect as "fireflies" or "glowing orbs", six lights
+  works, and mesmerizes people passing through the grove every night of the event. Many guests refer to the effect as "fireflies" or "glowing orbs": six lights
   chase each other around the sides of the triangle, sometimes passing through one another and sometimes bouncing off each other.
 
 For all three installations I used:
@@ -68,6 +68,8 @@ For all three installations I used:
 * 3-wire twist-to-connect waterproof cable connectors, one end soldered to the NeoPixel strip, one end going through the case to connect to the Arduino and power
   supply connectors inside the case.
 * Terminal screw blocks for connecting cables to power.
+* Heat shrink tubing to seal all of the wired solder joints.
+* Larger, clear heat shrink tubing to seal and strengthen the connections between soldered-together NeoPixel strips.
 
 An Arduino is a low-power microcontroller that can be programmed to do simple tasks, such as to send a signal to a NeoPixel strip that tells Pixel #117 to glow purple.
 An Arduino will send whatever signals you tell it to send, over and over and over again, for as long as it has power. To program an Arduino you use a USB cable
@@ -85,15 +87,16 @@ and the NeoPixel's signalling wire through a 370 Ohm resistor to one of the digi
 
 You also need to provide power to the Arduino itself. When programming the Arduino, the Arduino gets all of the power it needs from the USB cable. When you're done programming it still
 needs to get power from somewhere. I usually take an old USB cable, cut it in half, and connect the USB connector's red and black power wires directly to the power supply's red and black
-power wires. When I'm done programming the Arduino I just replace the USB cable that connects my laptop to the Arduino with the cable from the power supply to the Arduino.
+power wires. When I'm done programming the Arduino I just replace the USB cable that connects my laptop to the Arduino with the cable from the power supply to the Arduino. (Check the
+control box pictures below for examples.)
 
-Refer to the [Adafruit NeoPixel Überguide Basic Connections page](https://learn.adafruit.com/adafruit-neopixel-uberguide/basic-connections) for wiring details.
+Refer to the [Adafruit NeoPixel Überguide Basic Connections page](https://learn.adafruit.com/adafruit-neopixel-uberguide/basic-connections) for more wiring details.
 
 ## Testing NeoPixels
 
 To test a strip I attach the NeoPixel signalling wire to pin 0 on the Arduino and run the [neopixel-test-single-strand.ino](neopixel-test-single-strand/neopixel-test-single-strand.ino)
-code. This code is set up for (1) 150 LED NeoPixel strip (a 5m strip with 30 LEDs/m). If that doesn't match what you have just modify the constants to match what you're using. If it works
-you should see blue light pulse through the entire strip, as shown in the video below:
+code. This code is set up for (1) 150 LED NeoPixel strip (a 5m strip with 30 LEDs/m). If that doesn't match what you have just modify the constants at the beginning of the code block
+to match what you're using. If it works you should see colored light pulses down the entire strip, as shown in the video below:
 
 https://github.com/user-attachments/assets/c9fe2f5a-4bad-4f09-89c5-01fa240ad479
 
